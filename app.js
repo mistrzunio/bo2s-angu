@@ -1,40 +1,37 @@
-var app = angular.module('flapperNews', []);
-
-function readStories() {
-
-  var ocvUrl =  'https://bo2s-tumefacient-godliness.run.aws-usw02-pr.ice.predix.io/upload/last.json';
-  var ocvResult = {"0, 5, 7": 3, "0, 6, 6": 1, "4, 2, 5": 3, "4, 6, 5": 2, "5, 0, 1": 3, "7, 5, 7": 2};  
-  var columnsStories = { 1: [ ], 2: [], 3: [] };
+var app = angular.module('botsBoard', []);
+var lastJsonResponse;  
 
 
-  
-  for (stringId in ocvResult) {
-    if (columnsStories[ocvResult[stringId]]) { 
-      columnsStories[ocvResult[stringId]].push({"id":stringId}); 
-    }
-  }
-  
-  return columnsStories;
+
+function readStories($scope, $http) {
+
+    var ocvUrl =  'https://bo2s-tumefacient-godliness.run.aws-usw02-pr.ice.predix.io/upload/last.json';
+    var responseString;
+    var ocvResult = {};
+    var columnsStories = { 1: [ ], 2: [], 3: [] };
+
+    $http.get(ocvUrl).success(function(data){
+
+        ocvResult = JSON.parse(data)
+
+        if (ocvResult) {
+            for (var stringId in ocvResult) {
+                if (columnsStories[ocvResult[stringId]]) { 
+                  columnsStories[ocvResult[stringId]].push({"id":stringId}); 
+                }
+            }
+        } else {
+           console.log('ocvResult is null');
+        }
+
+        $scope.storiesToDo = columnsStories[1];
+        $scope.storiesInProgress = columnsStories[2];
+        $scope.storiesDone = columnsStories[3];
+    });
 }
 
-app.controller('MainCtrl', [
-'$scope',
-function($scope){
-/*
-  var ocvUrl =  'https://bo2s-tumefacient-godliness.run.aws-usw02-pr.ice.predix.io/upload/last.json';
-  $http({
-        method : "GET",
-        url : ocvUrl
-    }).then(function mySucces(response) {
-        alert('response.data');
-    }, function myError(response) {
-        alert('error!');
-    });
-*/     
-  var storiesStruct = readStories(); 
-  $scope.storiesToDo = storiesStruct[1];
-  $scope.storiesInProgress = storiesStruct[2];
-  $scope.storiesDone = storiesStruct[3];
-    
-  
-}]);
+app.controller('MainCtrl', 
+function($scope, $http) {
+    readStories($scope, $http); 
+
+});
