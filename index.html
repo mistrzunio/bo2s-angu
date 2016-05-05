@@ -3,6 +3,7 @@
   <head>
     <title>Bo2S App POC</title>
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bots-style.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
     <script src="app.js"></script>
   </head>
@@ -15,7 +16,7 @@
                 <div class="col-md-4">
                   <h4>to&nbsp;do</h4>
                     <div class="row" id="boardStoriesRow">
-                        <div class="col-md-6" id="columnToDo" ng-repeat="story in storiesToDo">
+                        <div class="col-md-5 bg-warning story" id="columnToDo" ng-repeat="story in storiesToDo">
                         {{story.id}}
                         </div>
                     </div>
@@ -24,7 +25,7 @@
                   <h4>in&nbsp;progress</h4>
         
                     <div class="row" id="boardStoriesRow">
-                        <div class="col-md-6" id="columnInProgress"  ng-repeat="story in storiesInProgress">
+                        <div class="col-md-5 bg-warning story" id="columnInProgress"  ng-repeat="story in storiesInProgress">
                         {{story.id}}
                         </div>  
                     </div>
@@ -32,7 +33,7 @@
                 <div class="col-md-4">      
                   <h4>done</h4>
                     <div class="row" id="boardStoriesRow">
-                        <div class="col-md-6" id="columnDone" ng-repeat="story in storiesDone">
+                        <div class="col-md-5 bg-warning story" id="columnDone" ng-repeat="story in storiesDone">
                         {{story.id}}
                         </div>
                     </div>
