@@ -9,32 +9,52 @@
   </head>
   <body ng-app="botsBoard" ng-controller="MainCtrl">
 
-      <div id="boardContainer" class="container-fluid">
-          <h4>[Proof of concept] BessOfTwoScrums Storyboard</h4>
-          <div id="boardMainContainer" class="container-fluid">
-            <div class="row" id="boardMainRow">
-                <div class="col-md-4">
-                  <h4>to&nbsp;do</h4>
-                    <div class="row" id="boardStoriesRow">
-                        <div class="col-md-5 bg-warning story" id="columnToDo" ng-repeat="story in storiesToDo">
-                        {{story.id}}
+      <div id="board-container" class="container-fluid">
+    
+    <iframe class="img-load-frame" src="https://bo2s-tumefacient-godliness.run.aws-usw02-pr.ice.predix.io/"></iframe>
+    
+          <h3 class="centered-header">BestOfTwoScrums - storyboard <small>proof of concept</small></h3>
+
+
+
+
+          <div id="board-main-container" class="container-fluid">
+            <div class="row" id="board-main-row">
+                <div class="col-sm-4 board-col-left">
+                  <h3 class="centered-header"><em>to&nbsp;do</em></h3>
+                    <div class="row board-stories-row">
+                        <div class="col-sm-5 bg-warning story" id="column-to-do" ng-repeat="story in storiesToDo">
+{{story.id}}
+<div class="text-right storypoints"><strong>{{story.points}}</strong></div>
+<h5>{{story.title}}</h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                  <h4>in&nbsp;progress</h4>
+                <div class="col-sm-4 board-col-mid">
+                  <h3 class="centered-header"><em>in&nbsp;progress</em></h3>
         
-                    <div class="row" id="boardStoriesRow">
-                        <div class="col-md-5 bg-warning story" id="columnInProgress"  ng-repeat="story in storiesInProgress">
+                    <div class="row board-stories-row">
+                        <div class="col-sm-5 bg-warning story" id="column-in-progress"  ng-repeat="story in storiesInProgress">
                         {{story.id}}
-                        </div>  
+<div class="text-right storypoints"><strong>{{story.points}}</strong></div>
+<h5>{{story.title}}</h5>
+                        </div> 
+                        
+                        <div class="col-sm-5" id="column-mid-filler">
+                        &nbsp;<br/>&nbsp;<br/>&nbsp;<br/>&nbsp;<br/>
+                        &nbsp;<br/>&nbsp;<br/>&nbsp;<br/>&nbsp;<br/>
+                        &nbsp;<br/>&nbsp;<br/>&nbsp;<br/>&nbsp;<br/>
+                        </div>     
+
                     </div>
                 </div>
-                <div class="col-md-4">      
-                  <h4>done</h4>
-                    <div class="row" id="boardStoriesRow">
-                        <div class="col-md-5 bg-warning story" id="columnDone" ng-repeat="story in storiesDone">
+                <div class="col-sm-4 board-col-right">      
+                  <h3 class="centered-header"><em>done</em></h3>
+                    <div class="row board-stories-row">
+                        <div class="col-sm-5 bg-warning story" id="column-done" ng-repeat="story in storiesDone">
                         {{story.id}}
+<div class="text-right storypoints"><strong>{{story.points}}</strong></div>
+<h5>{{story.title}}</h5>
                         </div>
                     </div>
                 </div>
@@ -42,7 +62,7 @@
           </div>
       </div>
   
-  <div id="lastResponse">{{lastOcvResponse}}</div>
+  <div id="last-response">{{lastOcvResponse}}</div>
   
   </body>
 </html>

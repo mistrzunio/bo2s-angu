@@ -1,4 +1,42 @@
+
+.img-load-frame {
+    display: block;
+    width: 600px;
+    height: 60px;
+    margin: 0 auto;
+    background-color: #eef;
+    border: none;
+}
+
 .story  {
     padding: 10px;
     margin: 10px;
+}
+
+.centered-header {
+    text-align: center;
+}
+
+/*
+.board-col-left {
+     border-right: 1px solid black; 
+}
+
+.board-col-right {
+    border-left: 1px solid black;
+}
+*/
+
+.board-col-mid {
+    background-color: #eee;
+}
+
+
+.storypoints {
+    width: auto;
+    float: right;
+}
+
+.board-stories-row {
+    border-top: 1px solid black;
 }
