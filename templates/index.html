@@ -2,16 +2,23 @@
 <html  lang="en">
   <head>
     <title>Bo2S App POC</title>
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="bots-style.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
-    <script src="app.js"></script>
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='bots-style.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='angular.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
   </head>
   <body ng-app="botsBoard" ng-controller="MainCtrl">
 
       <div id="board-container" class="container-fluid">
     
-    <iframe class="img-load-frame" src=""></iframe>
+    <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+
+    <strong>Please choose an image to upload:</strong>
+    <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+    <input type="submit" value="Upload & run opencv!" id="upload-button">
+    <div id="msg"></div>
+</form>
+<br>
     
           <h3 class="centered-header">BestOfTwoScrums - storyboard <small>proof of concept</small></h3>
 
@@ -24,9 +31,9 @@
                   <h3 class="centered-header"><em>to&nbsp;do</em></h3>
                     <div class="row board-stories-row">
                         <div class="col-sm-5 bg-warning story" id="column-to-do" ng-repeat="story in storiesToDo">
-{{story.id}}
-<div class="text-right storypoints"><strong>{{story.points}}</strong></div>
-<h5>{{story.title}}</h5>
+@@@story.id@@@
+<div class="text-right storypoints"><strong>@@@story.points@@@</strong></div>
+<h5>@@@story.title@@@</h5>
                         </div>
                     </div>
                 </div>
@@ -35,9 +42,9 @@
         
                     <div class="row board-stories-row">
                         <div class="col-sm-5 bg-warning story" id="column-in-progress"  ng-repeat="story in storiesInProgress">
-                        {{story.id}}
-<div class="text-right storypoints"><strong>{{story.points}}</strong></div>
-<h5>{{story.title}}</h5>
+                        @@@story.id@@@
+<div class="text-right storypoints"><strong>@@@story.points@@@</strong></div>
+<h5>@@@story.title@@@</h5>
                         </div> 
                         
                         <div class="col-sm-5" id="column-mid-filler">
@@ -52,9 +59,9 @@
                   <h3 class="centered-header"><em>done</em></h3>
                     <div class="row board-stories-row">
                         <div class="col-sm-5 bg-warning story" id="column-done" ng-repeat="story in storiesDone">
-                        {{story.id}}
-<div class="text-right storypoints"><strong>{{story.points}}</strong></div>
-<h5>{{story.title}}</h5>
+                        @@@story.id@@@
+<div class="text-right storypoints"><strong>@@@story.points@@@</strong></div>
+<h5>@@@story.title@@@</h5>
                         </div>
                     </div>
                 </div>
@@ -62,7 +69,7 @@
           </div>
       </div>
   
-  <div id="last-response">{{lastOcvResponse}}</div>
+  <div id="last-response">@@@lastOcvResponse@@@</div>
   
   </body>
 </html>
