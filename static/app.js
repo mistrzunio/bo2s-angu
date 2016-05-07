@@ -22,6 +22,7 @@ function readStories($scope, $http, ocvUrl) {
 
         if (ocvResult) {
             for (var stringId in ocvResult) {
+                console.log(stringId);
                 if (columnsStories[ocvResult[stringId]]) {
                     var storyDetails = scrum.getStoryDetails(stringId);
                     columnsStories[ocvResult[stringId]].push({"id":stringId, 

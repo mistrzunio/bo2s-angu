@@ -1,0 +1,8 @@
+---
+applications:
+- name: Bo2S
+  memory: 1024MB
+  disk_quota: 2GB
+  random-route: true
+  command: python Bo2S.py
+  buildpack: https://github.com/ihuston/python-conda-buildpack.git
